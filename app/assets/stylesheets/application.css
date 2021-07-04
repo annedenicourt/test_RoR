@@ -13,7 +13,11 @@
  *= require_tree .
  *= require_self
  */
- .bouton {
+a {
+    text-decoration: none;
+}
+
+.bouton {
     text-decoration: none !important;
     color: white;
 }

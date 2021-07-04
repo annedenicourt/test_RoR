@@ -1,5 +1,4 @@
 <%= simple_form_for article do |f| %>
-
     <div>
         <%= f.label :title, 'Titre de l\'article'%><br>
         <%= f.input_field :title %> 
@@ -30,9 +29,5 @@
       <%= f.label :status, 'Statut' %><br>
       <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
     </div>
-
-    
-
-    
 <% end %>
     
