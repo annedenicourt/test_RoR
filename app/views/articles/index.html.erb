@@ -1,21 +1,28 @@
-<div class="row m-2">
-    <h1>Articles</h1>
-    <div class="col">  
+<div class="">
+    <h1 class="mt-2 mt-3 mb-5 ms-5 fw-bold">Bienvenue chez TUTO.COM</h1>
 
-        <%= Article.public_count %> articles ont été publiés !
-        <% @articles.each do |article| %>
-        <% unless article.archived? %>
-        <div>
-            <%= link_to article.title, article %>
+    <div class="text-center bg-white mt-5 mb-5">
+        <div class="pt-5 fs-3">Actuellement <%= Article.public_count %> tutos sont disponibles sur notre site !</div>
+        <div class="btn btn-lg btn-secondary text-center mt-3 mb-5"><%= link_to "Proposer un nouveau tuto", new_article_path, class:'bouton' %></div>        
+    </div>
+
+    <div class="row m-2">
+        <h2 class="text-center mt-5 mb-5">Nos tutos</h2>
+        <div class="col col-lg-10 d-flex mx-auto justify-content-center">  
+            <% @articles.each do |article| %>
+                <div class="tuto card me-5 shadow" >
+                    <% if article.image? %>
+                        <img src=<%= article.image %> class=" mx-auto card-img-top" alt="image tuto">
+                    <% end %>                
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-center"><%= article.title %></h5>
+                        <div class="btn btn-secondary"><%= link_to "Lire le tuto", article, class:'bouton' %></div>        
+                    </div>
+                </div>
+            <% unless article.archived? %>
+            <% end %>
+            <% end %>
         </div>
-        <% if article.image? %>
-            <p>
-                <%= image_tag article.image_url %>
-            </p>
-        <% end %> 
-        <% end %>
-        <% end %>
-    <div class="btn btn-secondary"><%= link_to "Ecrire un nouvel article", new_article_path, class:'bouton' %></div>        
     </div>
 </div>
 

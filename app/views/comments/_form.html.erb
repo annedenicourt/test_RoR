@@ -1,21 +1,26 @@
  <%= simple_form_for [ @article, @article.comments.build ] do |f| %>
-    <p>
-        <%= f.label :commenter, 'Votre nom'%><br>
-        <%= f.input_field :commenter %> 
-    </p>
-    
-    <p>
-        <%= f.label :body, 'Votre commentaire' %><br>    
-        <%= f.input_field :body %>
-    </p>
-    
-    <div>
-        <%= f.submit 'Publier un commentaire'%>
+    <div class="mb-3">
+        <%= f.input :commenter, label: 'Votre nom' %>
+        <% @article.errors.full_messages_for(:commenter).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
     </div>
-    
-    <div>
-      <%= f.label :status, 'Statut' %><br>
-      <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+
+    <div class="mb-3">
+        <%= f.input :body, label: 'Votre commentaire' %>
+        <% @article.errors.full_messages_for(:body).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :status, 'Statut', class:'form-label' %><br>
+        <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    </div> 
+
+    <div class="text-center">
+        <%= f.submit 'Publier un commentaire', class:'btn btn-secondary'%>
+        <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
     </div> 
 <% end %>
     

@@ -13,8 +13,23 @@
  *= require_tree .
  *= require_self
  */
+ body { 
+    background-image: url('y-so-serious-white.png'); 
+  }
+
 a {
     text-decoration: none;
+    color: black;
+}
+a :hover {
+    text-decoration: none;
+    color: gray;
+}
+.tuto {
+    width: 250px;
+}
+.tuto img {
+    width: 200px;
 }
 
 .bouton {

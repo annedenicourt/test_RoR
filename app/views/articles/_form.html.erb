@@ -1,15 +1,13 @@
 <%= simple_form_for article do |f| %>
     <div>
-        <%= f.label :title, 'Titre de l\'article'%><br>
-        <%= f.input_field :title %> 
+        <%= f.input :title, label:'Titre du tuto', class:'form-group' %> 
         <% article.errors.full_messages_for(:title).each do |message| %>
         <div><%= message %></div>
         <% end %>
     </div>
     
     <div>
-        <%= f.label :body, 'Contenu de l\'article' %><br>    
-        <%= f.input_field :body %>
+        <%= f.input :body, label:'Contenu du tuto' %>
         <% if article.image? %>
             <p>
                 <%= image_tag article.image_url %>
@@ -20,14 +18,14 @@
         <div><%= message %></div>
         <% end %>
     </div>
+
+    <div class="mb-3">
+        <%= f.label :status, 'Statut', class:'form-label' %><br>
+        <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    </div> 
     
-    <div>
-        <%= f.submit 'Publier un article'%>
-    </div>
-    
-    <div>
-      <%= f.label :status, 'Statut' %><br>
-      <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-    </div>
+    <div class="text-center">
+        <%= f.submit 'Publier un tuto', class:'btn btn-secondary'%>
+        <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+    </div> 
 <% end %>
-    

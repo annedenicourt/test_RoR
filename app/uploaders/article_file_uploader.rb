@@ -22,10 +22,10 @@ class ArticleFileUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process scale: [200, 300]
+  process scale: [200, 200]
   #
   def scale(width, height)
-    resize_to_fill width, height
+    resize_to_fit width, height
   end
 
   # Create different versions of your uploaded files:
