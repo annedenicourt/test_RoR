@@ -1,0 +1,26 @@
+ <%= simple_form_for [ @article, @article.comments.build ] do |f| %>
+
+    <p>
+        <%= f.label :commenter, 'Votre nom'%><br>
+        <%= f.input_field :commenter %> 
+    </p>
+    
+    <p>
+        <%= f.label :body, 'Votre commentaire' %><br>    
+        <%= f.input_field :body %>
+    </p>
+    
+    <div>
+        <%= f.submit 'Publier un commentaire'%>
+    </div>
+    
+    <div>
+      <%= f.label :status, 'Statut' %><br>
+      <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    </div>
+    
+<% end %>
+    
+
+  
+  

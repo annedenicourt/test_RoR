@@ -1,0 +1,38 @@
+<%= simple_form_for article do |f| %>
+
+    <div>
+        <%= f.label :title, 'Titre de l\'article'%><br>
+        <%= f.input_field :title %> 
+        <% article.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    
+    <div>
+        <%= f.label :body, 'Contenu de l\'article' %><br>    
+        <%= f.input_field :body %>
+        <% if article.image? %>
+            <p>
+                <%= image_tag article.image_url %>
+            </p>
+        <% end %>    
+        <%= f.input :image, as: :file %>
+        <% article.errors.full_messages_for(:body).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    
+    <div>
+        <%= f.submit 'Publier un article'%>
+    </div>
+    
+    <div>
+      <%= f.label :status, 'Statut' %><br>
+      <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    </div>
+
+    
+
+    
+<% end %>
+    
